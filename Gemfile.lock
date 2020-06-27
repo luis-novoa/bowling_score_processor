@@ -2,7 +2,12 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.1)
+    concurrent-ruby (1.1.6)
     diff-lcs (1.4.2)
+    faker (2.13.0)
+      i18n (>= 1.6, < 2)
+    i18n (1.8.3)
+      concurrent-ruby (~> 1.0)
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)
@@ -40,6 +45,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  faker
   rspec
   rubocop
 
