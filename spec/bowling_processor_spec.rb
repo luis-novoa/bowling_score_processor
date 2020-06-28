@@ -1,45 +1,14 @@
-# frozen_string_literal: true
-
 require File.expand_path('../bin/bowling_processor', __dir__)
 
 RSpec.describe '#process_bowling_report' do
-  let(:file) {"Jeff 10
-  John 3
-  John 7
-  Jeff 7
-  Jeff 3
-  John 6
-  John 3
-  Jeff 9
-  Jeff 0
-  John 10
-  Jeff 10
-  John 8
-  John 1
-  Jeff 0
-  Jeff 8
-  John 10
-  Jeff 8
-  Jeff 2
-  John 10
-  Jeff F
-  Jeff 6
-  John 9
-  John 0
-  Jeff 10
-  John 7
-  John 3
-  Jeff 10
-  John 4
-  John 4
-  Jeff 10
-  Jeff 8
-  Jeff 1
-  John 10
-  John 9
-  John 0"}
-  it "outputs standardized bowling score report" do
-    expect{ process_bowling_report(file) }.to output(
+  let(:file) do
+    "Jeff 10\nJohn 3\nJohn 7\nJeff 7\nJeff 3\nJohn 6\nJohn 3\nJeff 9\nJeff 0\nJohn 10\nJeff 10\nJohn 8\nJohn 1"\
+    "\nJeff 0\nJeff 8\nJohn 10\nJeff 8\nJeff 2\nJohn 10\nJeff F\nJeff 6\nJohn 9\nJohn 0\nJeff 10\nJohn 7\nJohn 3"\
+    "\nJeff 10\nJohn 4\nJohn 4\nJeff 10\nJeff 8\nJeff 1\nJohn 10\nJohn 9\nJohn 0"
+  end
+
+  it 'outputs standardized bowling score report' do
+    expect { process_bowling_report(file) }.to output(
       "+----------+----+----+----+----+----+----+----+----+----+------+\n"\
       "|Frame     |1   |2   |3   |4   |5   |6   |7   |8   |9   |10    |\n"\
       "+----------+----+----+----+----+----+----+----+----+----+------+\n"\
