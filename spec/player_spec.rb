@@ -15,12 +15,11 @@ RSpec.describe Player do
     end
   end
   
-  # context "#create_players_from_hash" do
-  #   let(:player_hash) do 
-  #     {'Joe' => ['1', '9'], 'Marcus' => ['F']}
-  #   end
-    # it "automates creation of players from hash" do
-      
-    # end
-  # end
+  context "#create_players_from_hash" do
+    let(:player_hash) { {'Joe' => Array.new(12, '10'), 'Marcus' => Array.new(21, 'F')} }
+    it "automates creation of players from hash" do
+      destiny_array = Player.create_players_from_hash(player_hash)
+      expect(destiny_array[0].name).to eq('Joe').or eq('Marcus')
+    end
+  end
 end
