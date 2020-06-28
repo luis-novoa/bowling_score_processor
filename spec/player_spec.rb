@@ -33,7 +33,7 @@ RSpec.describe Player do
     it "generates strike symbols" do
       joe = Player.new('Joe', Array.new(12, '10'))
       joe.generate_personal_score
-      expect(joe.formatted_rounds).to eq(Array.new(9, [nil, 'X']) << %w[X X X])
+      expect(joe.formatted_rounds).to eq(Array.new(9, [' ', 'X']) << %w[X X X])
     end
 
     it "calculates spares correctly" do

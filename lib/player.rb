@@ -60,7 +60,7 @@ class Player
 
   private
   def format_score(value, spare = false)
-    return self.formatted_rounds.push([nil, 'X']) if value == 'X'
+    return self.formatted_rounds.push([' ', 'X']) if value == 'X'
     return self.formatted_rounds.push([value[0], '/']) if spare
 
     if value.size == 3
