@@ -21,12 +21,6 @@ def process_bowling_report(file)
   end
 end
 
-if __FILE__ == $PROGRAM_NAME
-  file_path = File.expand_path("../input/#{ARGV[0]}", __dir__)
-  file = File.read(file_path)
-  process_bowling_report(file)
-end
-
 private
 def print_results(player)
   player.formatted_rounds.each_with_index do |e, i|
@@ -45,4 +39,11 @@ def print_results(player)
       print "#{e.to_s.ljust(4)}|"
     end
   end
+end
+
+public
+if __FILE__ == $PROGRAM_NAME
+  file_path = File.expand_path("../input/#{ARGV[0]}", __dir__)
+  file = File.read(file_path)
+  process_bowling_report(file)
 end
