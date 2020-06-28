@@ -36,7 +36,7 @@ class Player
         format_score('X')
         i += 1
       else
-        round_score = check_round_score(only_numbers[i], only_numbers[i + 1], only_numbers[i + 2], round_score, i)
+        round_score = check_for_spare(only_numbers[i], only_numbers[i + 1], only_numbers[i + 2], round_score, i)
         i += 2
       end
     end
@@ -57,7 +57,7 @@ class Player
     formatted_rounds.push(value)
   end
 
-  def check_round_score(score1, score2, score3, total_score, marker)
+  def check_for_spare(score1, score2, score3, total_score, marker)
     case score1 + score2 <=> 10
     when -1
       total_score -= score3
