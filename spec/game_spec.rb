@@ -7,7 +7,7 @@ RSpec.describe Game do
     it "breaks document into array of lines" do
       txt = "Joe 1\nMarcus 10"
       processor = Game.new(txt)
-      expect(processor.file).to eq(["Joe 1", "Marcus 10"]) 
+      expect(processor.players_rounds).to eq(["Joe 1", "Marcus 10"]) 
     end
 
     it "stops program if file is empty string" do
@@ -28,12 +28,39 @@ RSpec.describe Game do
       expect{ processor.process_rounds }.to raise_error(SystemExit).and output("\"Joe 1 10\" can't be processed.\n").to_stderr
     end
 
-    it "splits each round between player and score" do
-      txt = "Joe 1\nMarcus 10"
+    # it "splits each round in player and score" do
+    #   txt = "Joe 1\nMarcus 10"
+    #   processor = Game.new(txt)
+    #   processor.process_rounds
+    #   expect(processor.file).to eq([['Joe', '1'], ['Marcus', '10']])
+    # end
+
+    it "detects negative scores" do
+      txt = "Joe -1\nMarcus 10"
       processor = Game.new(txt)
-      processor.process_rounds
-      expect(processor.file).to eq([['Joe', '1'], ['Marcus', '10']])
+      # processor.process_rounds
+      expect{ processor.process_rounds }.to raise_error(SystemExit).and output("Invalid score on \"Joe -1\".\n").to_stderr
     end
-    
+
+    it "detects scores bigger than 10" do
+      txt = "Joe 11\nMarcus 10"
+      processor = Game.new(txt)
+      # processor.process_rounds
+      expect{ processor.process_rounds }.to raise_error(SystemExit).and output("Invalid score on \"Joe 11\".\n").to_stderr
+    end
+
+    it "detects invalid letters or words on scores" do
+      txt = "Joe A\nMarcus 10"
+      processor = Game.new(txt)
+      # processor.process_rounds
+      expect{ processor.process_rounds }.to raise_error(SystemExit).and output("Invalid score on \"Joe A\".\n").to_stderr
+    end
+
+    # it "returns a Hash with players as keys and an array of scores as values" do
+    #   txt = "Joe 1\nJoe 9\nMarcus 10"
+    #   processor = Game.new(txt)
+    #   processor.process_rounds
+    #   processor.create_players_hash
+    # end
   end
 end

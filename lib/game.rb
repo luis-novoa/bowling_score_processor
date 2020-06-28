@@ -1,19 +1,18 @@
 class Game
-  attr_accessor :file
+  attr_accessor :players_rounds
   def initialize(file)
     abort 'File input is empty.' if file == ''
 
-    @file = file.split("\n")
+    @players_rounds = file.split("\n")
     @player_list = []
-    @player_names = []
   end
 
   def process_rounds
-    file.map! do |e|
+    players_hash = Hash.new
+    players_rounds.each do |e|
       splitted = e.split(' ')
       abort "\"#{e}\" can't be processed." unless splitted.size == 2
-
-      e = splitted
+      abort "Invalid score on \"#{e}\"." unless splitted[1].match?(/(^[0-9]$)|(^10$)|(^F$)/)
     end
   end
 end
