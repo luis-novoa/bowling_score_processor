@@ -1,10 +1,9 @@
 class Game
-  attr_accessor :players_rounds
+  attr_accessor :players_rounds, :player_list
   def initialize(file)
     abort 'File input is empty.' if file == ''
 
     @players_rounds = file.split("\n")
-    @player_list = []
   end
 
   def process_rounds
