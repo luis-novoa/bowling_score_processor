@@ -52,7 +52,7 @@ Now you have a copy of this repository in your profile and in your computer!
 - Visual Studio Code
 
 ### Run tests
-This project was done entirely using the TDD methodology. So far, 20 tests were created and all of them are satisfied. Run the following code to execute them:
+This project was done entirely using the TDD methodology. So far, 22 tests were created and all of them are satisfied. Run the following code to execute them:
 
 ```
 $ rspec --format documentation
